@@ -5,7 +5,6 @@ INDEX VERSION 1.126+/Users/chris/Uni/Git/FUB_ALPIII_WS1213/eclipse_workspace/.me
 3266567714.index
 3000285004.index
 84777399.index
-3595877364.index
 765977872.index
 3712507179.index
 4249315662.index
