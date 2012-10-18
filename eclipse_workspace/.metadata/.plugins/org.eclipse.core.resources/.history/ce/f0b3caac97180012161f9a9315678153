@@ -1,0 +1,41 @@
+// Klasse zum Testen des Stacks
+
+public class StapelTest extends ArrayStapel{
+		
+
+	public static void main(String[] args) {
+		
+		Integer[] arrayOfInts;
+		arrayOfInts = new Integer[3];
+		arrayOfInts[0]= 1;
+		arrayOfInts[1]= 2;
+		arrayOfInts[2]= 3;
+		
+		
+		// Stapel erstellen (Array der Länge 1 wird automatisch erstellt)
+		ArrayStapel Stapel;
+		Stapel= new ArrayStapel(1);
+		
+		// Sta[el füllen
+		Stapel.push("Eins");
+		Stapel.push("Zwei");
+		
+		// noch einen Stapel aus bereits vorhandenem Array 'TestArray' erstellen
+		ArrayStapel<Integer> Stapel2= new ArrayStapel<Integer>(arrayOfInts);
+		
+		// Stapel auffüllen
+		//Stapel2.push(3);
+		
+		
+		try{
+			System.out.println(Stapel.pop());
+			System.out.println(Stapel2.pop());
+			System.out.println(Stapel2.pop());
+		}catch (EmptyStackException es){
+			System.out.println("Schlecht!");
+		}
+		
+
+	}
+
+}

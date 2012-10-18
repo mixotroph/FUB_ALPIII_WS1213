@@ -1,0 +1,8 @@
+
+public class EmptyStackException extends Exception {
+	String message;
+	public EmptyStackException(String message) {
+		super("Der Stapel ist leer!");
+		this.message= message;
+	}
+}

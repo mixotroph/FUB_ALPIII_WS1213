@@ -1,0 +1,18 @@
+
+public class StapelTest extends ArrayStapel {
+
+	public static void main(String[] args) {
+		ArrayStapel Stapel;
+		Stapel= new ArrayStapel();
+		Stapel.push("Eins");
+		
+		try{
+			System.out.println(Stapel.pop());
+		}catch (EmptyStackException es){
+			System.out.println("Schlecht!");
+		}
+		
+
+	}
+
+}
