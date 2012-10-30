@@ -1,5 +1,5 @@
 package Stack;
-// Klasse zum Testen des Stacks
+// Klasse zum Testen des Stacks   
 
 
 public class StackTest{
@@ -13,14 +13,14 @@ public class StackTest{
 		// Stapel aus bereits vorhandenem Array 'arrayOfInts' erstellen
 		StackArray<Integer> Stapel= new StackArray<Integer>(arrayOfInts);
 		
-		// Stapel auffŸllen
+		// Stapel auffï¿½llen
 		Stapel.push(1);
 		
-		// noch einen Stapel erstellen (Array der LŠnge 1 wird automatisch erstellt)
+		// noch einen Stapel erstellen (Array der Lï¿½nge 1 wird automatisch erstellt)
 		StackArray<String> Stapel2;
 		Stapel2= new StackArray<String>(1);
 		
-		// Stapel fŸllen
+		// Stapel fï¿½llen
 		Stapel2.push("Eins");
 		Stapel2.push("Zwei");
 			
