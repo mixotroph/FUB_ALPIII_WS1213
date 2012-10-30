@@ -1,4 +1,4 @@
-package Stack;
+package stack;
 
 public class StackArray <E> implements Stack <E> {
 	private E[] sArray; //Im sArray werden die Stapelelemente gespeichert
