@@ -1,4 +1,0 @@
-
-public class ArrayStapel implements Stack<E> {
-
-}
