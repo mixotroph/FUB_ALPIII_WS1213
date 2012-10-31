@@ -28,9 +28,7 @@ public class Line2D{
 		return Math.sqrt(Math.pow((a.x-b.x), 2) + Math.pow((a.y-b.y), 2));
 	}
 	
-	public boolean cut(Line2D l){
-		double s= 0;
-		
-		return true;
+	public boolean cut(Line2D l){				
+		return java.awt.geom.Line2D.linesIntersect(this.a.x, this.a.y, this.b.x, this.b.y,a.x, a.y, b.x, b.y);
 	}
 }

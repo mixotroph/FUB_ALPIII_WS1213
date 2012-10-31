@@ -6,17 +6,20 @@
 // alle Innenwinkel < 180
 
 package viereck;
-import java.awt.*; // Klasse Point verfŸgbar machen
+import java.awt.*; // Klasse Point und anderes Zeug verfŸgbar machen
 import java.util.*;
 
 public class Viereck implements Figure {
-	// Array um Punkte zu speichern
-	private Point[] points= new Point[4];
-	private Line2D[] lines = new Line2D[6];
-	double area, umfang;
+	//Ein Viereck hat...
+	private Point[] points= new Point[4];		// Array um Punkte zu speichern
+	public Line2D[] lines = new Line2D[6];		// Array um Linien zu speichern
+	Line2D d1, d2;								// diaginale Linien
+	double area, umfang;						// FlŠche und Umfang
 	
-	// KONSTRUKTOREN
-	// Konstruktor fŸr Viereck ohne Ecken
+	// Vorannahmen
+	// Um ein Vierck zu konstruieren mŸssen vier Punkte Ÿbergeben werden
+	
+	// Konstruktor fŸr Viereck ohne †bergabe von Punkten
 	public Viereck() {
 		for (int i= 0; i< 4; i++)
 			points[i]= new Point();
@@ -50,11 +53,21 @@ public class Viereck implements Figure {
 				 n++;
 			}
 		}
+		
+		for (int i= 0; i<6; i++) {
+			for (int j=i+1; j<5; j++) {
+				if (lines[i].cut(lines[j]) && !(lines[i].a==lines[j].a || lines[i].b==lines[j].b || 
+						lines[i].a==lines[j].b || lines[i].b==lines[j].a)) {
+					d1= lines[i];
+					d2= lines[j];
+				}
+			}
+		}
 	}
+
 	
 	// Punkte sortieren fŸr Trapezformel?
 
-	
 	private void sortPoints() {
 		int[] t= new int[4];
 		Point[] temp= new Point[4];
@@ -81,6 +94,8 @@ public class Viereck implements Figure {
 				((points[1].y-points[3].y) * (points[0].x-points[2].x));
 		return 0.5*Math.abs(erg);
 	}
+	
+	
 	
 	// umfang() berechnet den Umfang des Vierecks
 	public double umfang() {

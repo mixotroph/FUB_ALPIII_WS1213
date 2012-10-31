@@ -13,7 +13,6 @@ public class ViereckTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		Point[] points= new Point[4];
 		points[0]= new Point(0,0);
@@ -23,9 +22,15 @@ public class ViereckTest {
 		
 		Viereck viereck= new Viereck(points);
 		viereck.FindLines();
-		System.out.println(viereck.flaeche());
-		System.out.println(viereck.lines[1].m);
-
+		
+		for (int i= 0; i<6;i++){
+			System.out.println(viereck.lines[i].a.toString()+viereck.lines[i].b.toString());	
+		}
+		System.out.println(viereck.d1.a.toString()+viereck.d1.b.toString());
+		System.out.println(viereck.d2.a.toString()+viereck.d2.b.toString());
+		//System.out.println(viereck.lines[1].m);
+		//if (viereck.d1.a==viereck.d1.a)
+				System.out.println("JA");
 	}
 
 }
