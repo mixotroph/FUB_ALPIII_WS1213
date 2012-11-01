@@ -6,7 +6,7 @@
 // alle Innenwinkel < 180
 
 package viereck;
-import java.awt.*; // Klasse Point und anderes Zeug verfŸgbar machen
+import java.awt.*; // Klasse Point und anderes Zeug verfï¿½gbar machen
 import java.util.*;
 
 public class Viereck implements Figure {
@@ -14,18 +14,18 @@ public class Viereck implements Figure {
 	private Point[] points= new Point[4];		// Array um Punkte zu speichern
 	public Line2D[] lines = new Line2D[6];		// Array um Linien zu speichern
 	Line2D d1, d2;								// diaginale Linien
-	double area, umfang;						// FlŠche und Umfang
+	double area, umfang;						// Flï¿½che und Umfang
 	
 	// Vorannahmen
-	// Um ein Vierck zu konstruieren mŸssen vier Punkte Ÿbergeben werden
+	// Um ein Vierck zu konstruieren mï¿½ssen vier Punkte ï¿½bergeben werden
 	
-	// Konstruktor fŸr Viereck ohne †bergabe von Punkten
+	// Konstruktor fï¿½r Viereck ohne ï¿½bergabe von Punkten
 	public Viereck() {
 		for (int i= 0; i< 4; i++)
 			points[i]= new Point();
 	}
 	
-	// Konstrutor fŸr †bergabe eines Arrays
+	// Konstrutor fï¿½r ï¿½bergabe eines Arrays
 	public Viereck(Point[] points){
 		if (points.length == this.points.length) {
 			this.points= points;
@@ -66,7 +66,7 @@ public class Viereck implements Figure {
 	}
 
 	
-	// Punkte sortieren fŸr Trapezformel?
+	// Punkte sortieren fï¿½r Trapezformel?
 
 	private void sortPoints() {
 		int[] t= new int[4];
@@ -84,12 +84,12 @@ public class Viereck implements Figure {
 		
 	}
 	
-	// flaeche() berechnet den FlŠcheninhalt des Vierecks
+	// flaeche() berechnet den Flï¿½cheninhalt des Vierecks
 	public double flaeche() {
 		
 		//sortPoints();
 		
-		// falls Punkte in richtiger Reihenfolge eingegeben: Gau§'sche Trapezformel 
+		// falls Punkte in richtiger Reihenfolge eingegeben: Gauï¿½'sche Trapezformel 
 		double erg= ((points[0].y-points[2].y) * (points[3].x-points[1].x)) + 
 				((points[1].y-points[3].y) * (points[0].x-points[2].x));
 		return 0.5*Math.abs(erg);
@@ -102,14 +102,14 @@ public class Viereck implements Figure {
 		return 0;
 	}
 	
-	// ermšglicht zwei Vierecke zu vergleichen
+	// ermï¿½glicht zwei Vierecke zu vergleichen
 	public int compareTo(Figure f){
-		// z.B. Differenz zwischen FlŠcheninhalten zurŸckgeben
+		// z.B. Differenz zwischen Flï¿½cheninhalten zurï¿½ckgeben
 		return 0;
 	}
 
 	public static double angleBetween2Lines(Line2D line1, Line2D line2)
-    {    /* liefert den Winkel zwischen 
+    {    /* liefert den Winkel zwischen zwei Linien*/
         double angle1 = Math.atan2(line1.getY1() - line1.getY2(),
                                    line1.getX1() - line1.getX2());
         double angle2 = Math.atan2(line2.getY1() - line2.getY2(),
