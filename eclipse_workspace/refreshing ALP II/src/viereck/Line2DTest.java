@@ -12,7 +12,7 @@ public class Line2DTest {
 		
 		Point a= new Point(-3,-2);
 		Point b= new Point(0,1);
-		Line2D line= new Line2D(a,b);
+		MyLine2D line= new MyLine2D(a,b);
 		
 		System.out.println(line.length());
 		System.out.println(line.m);
