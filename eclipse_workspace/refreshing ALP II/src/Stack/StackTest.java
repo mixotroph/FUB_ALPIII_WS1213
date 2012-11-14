@@ -1,4 +1,4 @@
-package stack;
+package Stack;
 // Klasse zum Testen des Stacks
 
 
