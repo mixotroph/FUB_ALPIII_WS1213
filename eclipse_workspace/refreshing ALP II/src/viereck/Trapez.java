@@ -8,9 +8,13 @@ import java.awt.*; // Klasse Point verfügbar machen
 
 public class Trapez extends Viereck {
 	
+	// Ein Trapez hat mindestens zwei parallele Seiten
+	protected MyLine2D p1,p2; 
+	
+		public Trapez(){
+			super();
+			}
 		public Trapez(Point[] points){
 			super(points);
-			// Kantenlänge ok?
-		}
-
+			}
 }

@@ -12,7 +12,7 @@ public interface Queue<E>{
 	// Funktionen laut Aufgabenstellung
 	public int size();
 	public boolean isEmpty();
-	public void enqueue(E e) throws FullQueueException;
+	public void enqueue(E e);
 	public E dequeue() throws EmptyQueueException;
 	
 	// zusätzliche Funktionen

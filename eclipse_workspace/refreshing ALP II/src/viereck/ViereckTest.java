@@ -5,32 +5,33 @@
 
 package viereck;
 import java.awt.*; // Klasse Point verfügbar machen
-
-
+	
 public class ViereckTest {
-
-	/**
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 		
-		Point[] points= new Point[4];
-		points[0]= new Point(0,0);
-		points[1]= new Point(0,2);
-		points[2]= new Point(2,2);
-		points[3]= new Point(2,0);
+		Point[] points1= new Point[4];
+		points1[0]= new Point(0,0);
+		points1[1]= new Point(1,1);
+		points1[2]= new Point(1,0);
+		points1[3]= new Point(0,1);
 		
-		Viereck viereck= new Viereck(points);
-		viereck.FindLines();
+		Point[] points2= new Point[4];
+		points2[0]= new Point(0,1);
+		points2[1]= new Point(0,-2);
+		points2[2]= new Point(-1,0);
+		points2[3]= new Point(0,1);
 		
-		for (int i= 0; i<6;i++){
-			System.out.println(viereck.lines[i].a.toString()+viereck.lines[i].b.toString());	
-		}
-		System.out.println(viereck.d1.a.toString()+viereck.d1.b.toString());
-		System.out.println(viereck.d2.a.toString()+viereck.d2.b.toString());
-		//System.out.println(viereck.lines[1].m);
-		//if (viereck.d1.a==viereck.d1.a)
-				System.out.println("JA");
+		Trapez viereck1= new Trapez(points1);
+		Drachen viereck2= new Drachen(points2);
+		
+		
+		System.out.println(viereck2.flaeche());
+		System.out.println(viereck2.umfang());
+		//System.out.println(viereck.p1.m);
+		//System.out.println(viereck.p2.m);
+		System.out.println(viereck1.compareTo(viereck1));
+
 	}
 
 }

@@ -1,8 +1,10 @@
+import queue.EmptyQueueException;
+
 
 public interface Queue<E> {
 	public int size();
 	public boolean isEmtpy();
 	public void enqueue(E e);
-	public E dequeue() throws EmtpyQueueException;
+	public E dequeue() throws EmptyQueueException;
 
 }

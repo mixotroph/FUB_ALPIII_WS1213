@@ -3,21 +3,18 @@
 // ALP III WS 12/13 - Uebung No. 1 
 // by Christoph van Heteren-Frese and Sven Wildermann  
 
-// alle Innenwinkel < 180
-
 package viereck;
-import java.awt.*; // Klasse Point und anderes Zeug verfŸgbar machen
-import java.util.*;
+import java.awt.*; // Klasse Point verfŸgbar machen
 
 public class Viereck implements Figure {
-	//Ein Viereck hat...
-	private Point[] points= new Point[4];		// Array um Punkte zu speichern
-	public Line2D[] lines = new Line2D[6];		// Array um Linien zu speichern
-	Line2D d1, d2;								// diaginale Linien
-	double area, umfang;						// FlŠche und Umfang
 	
+	//Ein Viereck hat...
+	private Point[] points= new Point[4];				// Array um Punkte zu speichern
+	protected MyLine2D[] lines = new MyLine2D[6];		// Array um alle Linien zu speichern
+	private MyLine2D d1, d2;							// zwei diaginale Linien
+
 	// Vorannahmen
-	// Um ein Vierck zu konstruieren mŸssen vier Punkte Ÿbergeben werden
+	// Um ein Vierck zu konstruieren mŸssen vier gŸltige (!) Punkte Ÿbergeben werden
 	
 	// Konstruktor fŸr Viereck ohne †bergabe von Punkten
 	public Viereck() {
@@ -39,82 +36,83 @@ public class Viereck implements Figure {
 		this.points[i]= p;
 		FindLines();
 	}
-	
+	// Falls man auf die Punkte zugreifen will
 	public Point GetPoint(int i) {
 		return this.points[i];
 	}
+	// Falls man auf die Linien zugreifen will
+	public MyLine2D[] GetLines() {
+		return this.lines;
+	}
 	
-	// Seiten erstellen
+	// Alle Seiten und die Diagonalen erstellen
 	public void FindLines() {
 		int n=0;
 		for(int i= 0; i<4;i++) {
 			for(int j= i+1; j<4;j++) {			
-				 this.lines[n]= new Line2D(points[i],points[j]);
+				 this.lines[n]= new MyLine2D(points[i],points[j]);
 				 n++;
 			}
 		}
-		
+		boolean cut, commonPoints;
 		for (int i= 0; i<6; i++) {
-			for (int j=i+1; j<5; j++) {
-				if (lines[i].cut(lines[j]) && !(lines[i].a==lines[j].a || lines[i].b==lines[j].b || 
-						lines[i].a==lines[j].b || lines[i].b==lines[j].a)) {
+			for (int j=i+1; j<6; j++) {
+				// schneiden sich die Linien?
+				cut= lines[i].cut(lines[j]);
+				
+				// besitzen die Linien gemeinsame Punkte?
+				commonPoints= (lines[i].a==lines[j].a || lines[i].b==lines[j].b || 
+						lines[i].a==lines[j].b || lines[i].b==lines[j].a);
+				
+				// wenn sich die Linien schneiden und keine gemeinsamen Punkte besitzen, sind es die Diagonalen
+				if ( cut && !commonPoints) {
 					d1= lines[i];
 					d2= lines[j];
 				}
 			}
 		}
 	}
-
-	
-	// Punkte sortieren fŸr Trapezformel?
-
-	private void sortPoints() {
-		int[] t= new int[4];
-		Point[] temp= new Point[4];
-		for (int i= 0; i < points.length; i++)
-				t[i]= points[i].x;
-		Arrays.sort(t);
-		for (int i= 0; i < points.length; i++) {
-			for (int j= 0; j < points.length; j++) {
-			if  (t[i] == points[j].x)
-					temp[i]= points[j];
-			}		
-			points= temp;
-		}
 		
+	public double angle(){
+		//einzelne Winkel der Diagonalen berechnen
+        double angle1= Math.atan2(d1.a.y - d1.b.y, d1.a.x - d1.b.x);
+        double angle2= Math.atan2(d2.a.y - d2.b.y, d2.a.x - d2.b.x);
+        
+        //Winkel verrechnen
+        return angle1-angle2;
 	}
 	
 	// flaeche() berechnet den FlŠcheninhalt des Vierecks
 	public double flaeche() {
-		
-		//sortPoints();
-		
-		// falls Punkte in richtiger Reihenfolge eingegeben: Gau§'sche Trapezformel 
-		double erg= ((points[0].y-points[2].y) * (points[3].x-points[1].x)) + 
-				((points[1].y-points[3].y) * (points[0].x-points[2].x));
-		return 0.5*Math.abs(erg);
+		//einzelne Winkel der Diagonalen berechnen
+        double angle1= Math.atan2(d1.a.y - d1.b.y, d1.a.x - d1.b.x);
+        double angle2= Math.atan2(d2.a.y - d2.b.y, d2.a.x - d2.b.x);
+        
+        //Winkel verrechnen
+        double angle= angle1-angle2;
+        
+        //Formel zur Berrechnung des FlŠcheninhalts
+		return Math.abs((0.5*d1.length*d2.length)*Math.sin(angle));
 	}
-	
-	
 	
 	// umfang() berechnet den Umfang des Vierecks
 	public double umfang() {
-		return 0;
+		double u=0;
+		// alle Seiten aufsummieren
+		for (int i= 0; i<6; i++){
+			u+=lines[i].length;
+		}
+		// Summe aller Seiten ohne die Diagonalen zurŸckgeben
+		return u-d1.length-d2.length;
 	}
 	
 	// ermšglicht zwei Vierecke zu vergleichen
 	public int compareTo(Figure f){
-		// z.B. Differenz zwischen FlŠcheninhalten zurŸckgeben
+		// z.B. FlŠcheninhalten als Vergliechskriterium
+		if (this.flaeche() > f.flaeche())
+			return 1;
+		if (this.flaeche() < f.flaeche())
+			return -1;
 		return 0;
 	}
-
-	public static double angleBetween2Lines(Line2D line1, Line2D line2)
-    {    /* liefert den Winkel zwischen 
-        double angle1 = Math.atan2(line1.getY1() - line1.getY2(),
-                                   line1.getX1() - line1.getX2());
-        double angle2 = Math.atan2(line2.getY1() - line2.getY2(),
-                                   line2.getX1() - line2.getX2());
-        return angle1-angle2;
-    }  
-
 }

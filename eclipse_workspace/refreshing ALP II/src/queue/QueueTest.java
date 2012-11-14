@@ -1,12 +1,12 @@
+// QueueTest.java
+//
+// ALP III WS 12/13 - Uebung No. 1 
+// by Christoph van Heteren-Frese and Sven Wildermann 
+
 package queue;
 
 public class QueueTest {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		QueueArray<Integer> queue= new QueueArray<Integer>(5);
 		
 		System.out.println( "isEmpty: "+queue.isEmpty() );
@@ -21,13 +21,8 @@ public class QueueTest {
 			System.out.println( "isEmpty: "+queue.isEmpty() );
 			System.out.println( "isFull: "+queue.full() );
 			
-			
-		} catch (FullQueueException fg ) {
-			
 		} catch (EmptyQueueException eq){
 			
 		}
-
 	}
-
 }

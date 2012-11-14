@@ -1,3 +1,8 @@
+// MyLine2D.java
+//
+// ALP III WS 12/13 - Uebung No. 1 
+// by Christoph van Heteren-Frese and Sven Wildermann  
+
 package viereck;
 import java.awt.Point;
 import java.lang.Math;

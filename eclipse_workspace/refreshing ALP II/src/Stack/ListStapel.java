@@ -25,6 +25,9 @@ public class ListStapel<T> implements Stack <T> {
 		head = head.next;
 		return element;
 	}
+	public T peek() throws EmptyStackException {
+		return (T) head;
+	}
 }
 		
 

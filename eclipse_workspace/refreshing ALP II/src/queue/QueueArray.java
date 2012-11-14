@@ -43,14 +43,14 @@ public class QueueArray <E> implements Queue <E> {
 		return head == tail;
 	}
 	
-	public void enqueue ( E e ) throws FullQueueException {
+	public void enqueue ( E e ){
 		if ( !full() ) {					// wenn die Warteschlange nicht voll ist...
 		queue[tail] = e;
 		if ( tail == (queue.length-1) )		// hier wird geprüft, ob tail am Ende des Feldes ist
 		tail = 0;
 		else tail++;
-		} else
-		throw new FullQueueException();
+		} 
+		//else throw new FullQueueException();
 	}
 	
 	public E dequeue() throws EmptyQueueException {
